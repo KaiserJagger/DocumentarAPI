@@ -1,0 +1,182 @@
+openapi: 3.1.0
+info:
+  title: 'Ecommerce JaggerStore'
+  version: '1.0.0'
+  description: 'Documentacion para administrar los productos en API'
+  contact:
+    name: 'Nicolas Andreolli'
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /products:
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                title:
+                  type: string
+                  required: true
+                category:
+                  type: string
+                  required: true
+                size:
+                  type: string
+                code:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  required: true
+                stock:
+                  type: number
+                  required: true
+                thumbnail:
+                  type: array
+                status:
+                  type: boolean
+              required:
+                - title
+                - category
+                - price
+                - stock
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /productsid/{productId}:
+    get:
+      summary: Get a product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID of the product
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /productseditbyid/{productId}:
+    put:
+      summary: Update a product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID of the product
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties:
+                title:
+                  type: string
+                  required: true
+                category:
+                  type: string
+                  required: true
+                size:
+                  type: string
+                code:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                  required: true
+                stock:
+                  type: number
+                  required: true
+                thumbnail:
+                  type: array
+                status:
+                  type: boolean
+              required:
+                - title
+                - category
+                - price
+                - stock
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /productsdeletebyid/delete/{productId}:
+    delete:
+      summary: Delete a product by ID
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: ID of the product
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        category:
+          type: string
+        size:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        stock:
+          type: number
+        thumbnail:
+          type: array
+        status:
+          type: boolean
+      required:
+        - title
+        - category
+        - price
+        - stock

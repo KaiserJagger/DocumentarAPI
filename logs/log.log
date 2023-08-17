@@ -1,0 +1,11 @@
+{"level":"fatal","message":0}
+{"level":"info","message":3}
+{"level":"warning","message":2}
+{"level":"error","message":1}
+{"level":"fatal","message":0}
+{"level":"warning","message":"function now() { [native code] } / WARNING"}
+{"level":"warning","message":"1690847486703 / WARNING"}
+{"level":"info","message":"1690847517448 / INFO"}
+{"level":"warning","message":"1690847517448 / WARNING"}
+{"level":"error","message":"1690847517448 / ERROR"}
+{"level":"fatal","message":"1690847517448 / FATAL"}
